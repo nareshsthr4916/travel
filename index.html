@@ -73,7 +73,7 @@ main {
     padding-block: 40px;
 }
 
-.nav-link i{
+.navbar i{
     font-size: 2rem;
     display: none;
 }
@@ -287,11 +287,29 @@ footer{
     .hero-img{
         width: 100%;
     }
-    .nav-link a{
-        display: none;
+    .nav-link{
+        position: fixed;
+        width: 100%;
+        left: -100%;
+        background-color: rgb(243, 243, 243);
+        top: 60px;
+        flex-direction: column;
+        text-align: center;
+        transition: 0.2s;
     }
-    .nav-link i{
+    .nav-link.active{
+        left: 0%;
+    }
+    .nav-link a{
+        color: black;
+        margin: 10px 0;
+    }
+   
+    .navbar i{
         display: initial;
+    }
+    .nav-link:active{
+        left: 100%;
     }
     
 }
@@ -307,8 +325,8 @@ footer{
     <nav>
         <div class="container">
             <div class="navbar flex">
-                <div class="nav-link flex">
-                    <i class="fa-solid fa-bars"></i>
+                <i class="fa-solid fa-bars" id="nav-toggle"></i>
+                <div class="nav-link flex" id="nav-links">
                     <a href="#">Home</a>
                     <a href="#">Guides</a>
                     <a href="#">Flights</a>
@@ -430,6 +448,14 @@ footer{
             </div>
         </div>
     </footer>
+    <script>
+        const navLinks = document.getElementById('nav-links');
+        const toggleButton = document.getElementById('nav-toggle');
+
+       toggleButton.addEventListener('click', () =>{
+        navLinks.classList.toggle('active');
+       })
+    </script>
 </body>
 
 </html>
